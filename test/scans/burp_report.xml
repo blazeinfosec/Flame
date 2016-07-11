@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<!DOCTYPE issues [
+<!ELEMENT issues (issue*)>
+<!ATTLIST issues burpVersion CDATA "">
+<!ATTLIST issues exportTime CDATA "">
+<!ELEMENT issue (serialNumber, type, name, host, path, location, severity, confidence, issueBackground?, remediationBackground?, references?, issueDetail?, issueDetailItems?, remediationDetail?, requestresponse*, collaboratorEvent*)>
+<!ELEMENT serialNumber (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT host (#PCDATA)>
+<!ATTLIST host ip CDATA "">
+<!ELEMENT path (#PCDATA)>
+<!ELEMENT location (#PCDATA)>
+<!ELEMENT severity (#PCDATA)>
+<!ELEMENT confidence (#PCDATA)>
+<!ELEMENT issueBackground (#PCDATA)>
+<!ELEMENT remediationBackground (#PCDATA)>
+<!ELEMENT references (#PCDATA)>
+<!ELEMENT issueDetail (#PCDATA)>
+<!ELEMENT issueDetailItems (issueDetailItem*)>
+<!ELEMENT issueDetailItem (#PCDATA)>
+<!ELEMENT remediationDetail (#PCDATA)>
+<!ELEMENT requestresponse (request?, response?, responseRedirected?)>
+<!ELEMENT request (#PCDATA)>
+<!ATTLIST request method CDATA "">
+<!ATTLIST request base64 (true|false) "false">
+<!ELEMENT response (#PCDATA)>
+<!ATTLIST response base64 (true|false) "false">
+<!ELEMENT responseRedirected (#PCDATA)>
+<!ELEMENT collaboratorEvent (interactionType, originIp, time, lookupType?, lookupHost?, requestresponse?)>
+<!ELEMENT interactionType (#PCDATA)>
+<!ELEMENT originIp (#PCDATA)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT lookupType (#PCDATA)>
+<!ELEMENT lookupHost (#PCDATA)>
+]>
+<issues burpVersion="1.7.03" exportTime="Mon Jul 04 21:58:51 BRT 2016">
+  <issue>
+    <serialNumber>6870316838174178304</serialNumber>
+    <type>2098688</type>
+    <name>HTML5 cross-origin resource sharing</name>
+    <host ip="208.84.244.127">https://chat.terra.com.br</host>
+    <path><![CDATA[/globalSTATIC/fe/zaz-admanager/zaz-admanager.html]]></path>
+    <location><![CDATA[/globalSTATIC/fe/zaz-admanager/zaz-admanager.html]]></location>
+    <severity>High</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>An HTML5 Cross-Origin Resource Sharing (CORS) policy controls whether and how content running on other domains can perform two-way interaction with the domain that publishes the policy. The policy is fine-grained and can apply access controls per-request based on the URL and other features of the request.</p>
+<p>If another domain is allowed by the policy, then that domain can potentially attack users of the application. If a user is logged in to the application, and visits a domain allowed by the policy, then any malicious content running on that domain can potentially retrieve content from the application, and sometimes carry out actions within the security context of the logged in user.</p>
+<p>Even if an allowed domain is not overtly malicious in itself, security vulnerabilities within that domain could potentially be leveraged by an attacker to exploit the trust relationship and attack the application that allows access. CORS policies on pages containing sensitive information should be reviewed to determine whether it is appropriate for the application to trust both the intentions and security posture of any domains granted access. </p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>Any inappropriate domains should be removed from the CORS policy.</p>]]></remediationBackground>
+    <issueDetail><![CDATA[The application implements an HTML5 cross-origin resource sharing (CORS) policy for this request which allows access from any domain.<br><br>Allowing access from all domains means that any domain can perform two-way interaction with the application via this request. Unless the response consists only of unprotected public content, this policy is likely to present a security risk.]]></issueDetail>
+  </issue>
+  <issue>
+    <serialNumber>1080994237482391552</serialNumber>
+    <type>16777984</type>
+    <name>Strict transport security not enforced</name>
+    <host ip="208.84.244.127">https://chat.terra.com.br</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Low</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p> The application fails to prevent users from connecting  to it over unencrypted connections.  An attacker able to modify a legitimate user's network traffic could bypass the application's use of SSL/TLS encryption, and use the application as a platform for attacks against its users. This attack is performed by rewriting HTTPS links as HTTP, so that if a targeted user follows a link to the site from an HTTP page, their browser never attempts to use an encrypted connection. The sslstrip tool  automates this process. </p>
+<p>
+To exploit this vulnerability, an attacker must be suitably positioned to intercept and modify the victim's network traffic.This scenario typically occurs when a client communicates with the server over an insecure connection such as public Wi-Fi, or a corporate or home network that is shared with a compromised computer. Common defenses such as switched networks are not sufficient to prevent this. An attacker situated in the user's ISP or the application's hosting infrastructure could also perform this attack. Note that an advanced adversary could potentially target any connection made over the Internet's core infrastructure. </p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>The application should instruct web browsers to only access the application using HTTPS. To do this, enable HTTP Strict Transport Security (HSTS) by adding a response header with the name 'Strict-Transport-Security' and the value 'max-age=expireTime', where expireTime is the time in seconds that browsers should remember that the site should only be accessed using HTTPS. Consider adding the 'includeSubDomains' flag if appropriate.</p>
+<p>Note that because HSTS is a &quot;trust on first use&quot; (TOFU) protocol, a user who has never accessed the application will never have seen the HSTS header, and will therefore still be vulnerable to SSL stripping attacks. To mitigate this risk, you can optionally add the 'preload' flag to the HSTS header, and submit the domain for review by browser vendors.</p>]]></remediationBackground>
+    <references><![CDATA[<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security">HTTP Strict Transport Security</a></li>
+<li><a href="http://www.thoughtcrime.org/software/sslstrip/">sslstrip</a></li>
+<li><a href="https://hstspreload.appspot.com/">HSTS Preload Form</a></li>
+</ul>]]></references>
+  </issue>
+  <issue>
+    <serialNumber>1053325260322443264</serialNumber>
+    <type>5243392</type>
+    <name>SSL cookie without secure flag set</name>
+    <host ip="208.84.244.127">https://chat.terra.com.br</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Information</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>If the secure flag is set on a cookie, then browsers will not submit the cookie in any requests that use an unencrypted HTTP connection, thereby preventing the cookie from being trivially intercepted by an attacker monitoring network traffic. If the secure flag is not set, then the cookie will be transmitted in clear-text if the user visits any HTTP URLs within the cookie's scope. An attacker may be able to induce this event by feeding a user suitable links, either directly or via another web site. Even if the domain that issued the cookie does not host any content that is accessed over HTTP, an attacker may be able to use links of the form http://example.com:443/ to perform the same attack.</p>
+<p>To exploit this vulnerability, an attacker must be suitably positioned to eavesdrop on the victim's network traffic. This scenario typically occurs when a client communicates with the server over an insecure connection such as public Wi-Fi, or a corporate or home network that is shared with a compromised computer. Common defenses such as switched networks are not sufficient to prevent this. An attacker situated in the user's ISP or the application's hosting infrastructure could also perform this attack. Note that an advanced adversary could potentially target any connection made over the Internet's core infrastructure.</p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>The secure flag should be set on all cookies that are used for transmitting sensitive data when accessing content over HTTPS. If cookies are used to transmit session tokens, then areas of the application that are accessed over HTTPS should employ their own session handling mechanism, and the session tokens used should never be transmitted over unencrypted communications.</p>]]></remediationBackground>
+    <issueDetail><![CDATA[The following cookies were issued by the application and do not have the secure flag set:<ul><li>trrgeo</li><li>X-XAct-ID</li></ul>The cookies do not appear to contain session tokens, which may reduce the risk associated with this issue. You should review the contents of the cookies to determine their function.]]></issueDetail>
+    <issueDetailItems>
+      <issueDetailItem><![CDATA[Other: trrgeo]]></issueDetailItem>
+      <issueDetailItem><![CDATA[Other: X-XAct-ID]]></issueDetailItem>
+    </issueDetailItems>
+  </issue>
+  <issue>
+    <serialNumber>7758620292394513408</serialNumber>
+    <type>5243648</type>
+    <name>Cookie scoped to parent domain</name>
+    <host ip="208.84.244.127">https://chat.terra.com.br</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Information</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>A cookie's domain attribute determines which domains can access the cookie. Browsers will automatically submit the cookie in requests to in-scope domains, and those domains will also be able to access the cookie via JavaScript. If a cookie is scoped to a parent domain, then that cookie will be accessible by the parent domain and also by any other subdomains of the parent domain. If the cookie contains sensitive data (such as a session token) then this data may be accessible by less trusted or less secure applications residing at those domains, leading to a security compromise.</p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>By default, cookies are scoped to the issuing domain and all subdomains. If you remove the explicit domain attribute from your Set-cookie directive, then the cookie will have this default scope, which is safe and appropriate in most situations. If you particularly need a cookie to be accessible by a parent domain, then you should thoroughly review the security of the applications residing on that domain and its subdomains, and confirm that you are willing to trust the people and systems that support those applications.</p>]]></remediationBackground>
+    <issueDetail><![CDATA[The following cookies were issued by the application and is scoped to a parent of the issuing domain:<ul><li>trrgeo</li><li>X-XAct-ID</li></ul>The cookies do not appear to contain session tokens, which may reduce the risk associated with this issue. You should review the contents of the cookies to determine their function.]]></issueDetail>
+    <issueDetailItems>
+      <issueDetailItem><![CDATA[Other: trrgeo]]></issueDetailItem>
+      <issueDetailItem><![CDATA[Other: X-XAct-ID]]></issueDetailItem>
+    </issueDetailItems>
+  </issue>
+  <issue>
+    <serialNumber>3701852932631144448</serialNumber>
+    <type>5244160</type>
+    <name>Cross-domain script include</name>
+    <host ip="208.84.244.127">https://chat.terra.com.br</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Information</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>When an application includes a script from an external domain, this script is executed by the browser within the security context of the invoking application. The script can therefore do anything that the application's own scripts can do, such as accessing application data and performing actions within the context of the current user.</p>
+<p>If you include a script from an external domain, then you are trusting that domain with the data and functionality of your application, and you are trusting the domain's own security to prevent an attacker from modifying the script to perform malicious actions within your application. </p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>Scripts should not be included from untrusted domains. Applications that rely on third-party scripts should consider copying the contents of these scripts onto their own domain and including them from there. If that is not possible (e.g. for licensing reasons) then consider reimplementing the script's functionality within application code.</p>]]></remediationBackground>
+    <issueDetail><![CDATA[The response dynamically includes the following scripts from other domains:<ul><li>https://s1.trrsf.com/update-1451581506/fe/zaz-app-layer/_js/app-layer.min.js</li><li>https://s1.trrsf.com/update-1457532616/fe/zaz-mod-chatbase/_js/mod-chatbase.min.js</li><li>https://s1.trrsf.com/update-1459347023/fe/zaz-mod-viewable/_js/zaz-mod-viewable.js</li><li>https://s1.trrsf.com/update-1465843821/fe/zaz-admanager/zaz-admanager-min.js</li><li>https://s1.trrsf.com/update-1466709022/fe/zaz-3rd/promise/promise-1.0.0.min.js</li><li>https://s2.trrsf.com/update-1458563111/fe/zaz-mod-xrequest/_js/mod-xrequest.min.js</li><li>https://s2.trrsf.com/update-1466619310/fe/zaz-ui-chat/_js/context.min.js</li><li>https://s2.trrsf.com/update-1466709021/fe/zaz-3rd/firebase/firebase-2.4.1.min.js</li></ul>]]></issueDetail>
+    <issueDetailItems>
+      <issueDetailItem><![CDATA[https://s1.trrsf.com/update-1451581506/fe/zaz-app-layer/_js/app-layer.min.js]]></issueDetailItem>
+      <issueDetailItem><![CDATA[https://s1.trrsf.com/update-1457532616/fe/zaz-mod-chatbase/_js/mod-chatbase.min.js]]></issueDetailItem>
+      <issueDetailItem><![CDATA[https://s1.trrsf.com/update-1459347023/fe/zaz-mod-viewable/_js/zaz-mod-viewable.js]]></issueDetailItem>
+      <issueDetailItem><![CDATA[https://s1.trrsf.com/update-1465843821/fe/zaz-admanager/zaz-admanager-min.js]]></issueDetailItem>
+      <issueDetailItem><![CDATA[https://s1.trrsf.com/update-1466709022/fe/zaz-3rd/promise/promise-1.0.0.min.js]]></issueDetailItem>
+      <issueDetailItem><![CDATA[https://s2.trrsf.com/update-1458563111/fe/zaz-mod-xrequest/_js/mod-xrequest.min.js]]></issueDetailItem>
+      <issueDetailItem><![CDATA[https://s2.trrsf.com/update-1466619310/fe/zaz-ui-chat/_js/context.min.js]]></issueDetailItem>
+      <issueDetailItem><![CDATA[https://s2.trrsf.com/update-1466709021/fe/zaz-3rd/firebase/firebase-2.4.1.min.js]]></issueDetailItem>
+    </issueDetailItems>
+  </issue>
+  <issue>
+    <serialNumber>3148024489194309632</serialNumber>
+    <type>5244416</type>
+    <name>Cookie without HttpOnly flag set</name>
+    <host ip="208.84.244.127">https://chat.terra.com.br</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Information</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>If the HttpOnly attribute is set on a cookie, then the cookie's value cannot be read or set by client-side JavaScript. This measure makes certain client-side attacks, such as cross-site scripting, slightly harder to exploit by preventing them from trivially capturing the cookie's value via an injected script.</p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>There is usually no good reason not to set the HttpOnly flag on all cookies. Unless you specifically require legitimate client-side scripts within your application to read or set a cookie's value, you should set the HttpOnly flag by including this attribute within the relevant Set-cookie directive.</p>
+<p>You should be aware that the restrictions imposed by the HttpOnly flag can potentially be circumvented in some circumstances, and that numerous other serious attacks can be delivered by client-side script injection, aside from simple cookie stealing. </p>]]></remediationBackground>
+    <issueDetail><![CDATA[The following cookies were issued by the application and do not have the HttpOnly flag set:<ul><li>trrgeo</li><li>X-XAct-ID</li></ul>The cookies do not appear to contain session tokens, which may reduce the risk associated with this issue. You should review the contents of the cookies to determine their function.]]></issueDetail>
+    <issueDetailItems>
+      <issueDetailItem><![CDATA[Other: trrgeo]]></issueDetailItem>
+      <issueDetailItem><![CDATA[Other: X-XAct-ID]]></issueDetailItem>
+    </issueDetailItems>
+  </issue>
+  <issue>
+    <serialNumber>7747895774836284416</serialNumber>
+    <type>7340288</type>
+    <name>Cacheable HTTPS response</name>
+    <host ip="208.84.244.127">https://chat.terra.com.br</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Information</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>Unless directed otherwise, browsers may store a local cached copy of content received from web servers. Some browsers, including Internet Explorer, cache content accessed via HTTPS. If sensitive information in application responses is stored in the local cache, then this may be retrieved by other users who have access to the same computer at a future time.</p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>Applications should return caching directives instructing browsers not to store local copies of any sensitive data. Often, this can be achieved by configuring the web server to prevent caching for relevant paths within the web root. Alternatively, most web development platforms allow you to control the server's caching directives from within individual scripts. Ideally, the web server should return the following HTTP headers in all responses containing sensitive content:</p>
+<ul>
+<li>Cache-control: no-store</li><li>Pragma: no-cache</li></ul>]]></remediationBackground>
+  </issue>
+  <issue>
+    <serialNumber>6515896755197854720</serialNumber>
+    <type>7340288</type>
+    <name>Cacheable HTTPS response</name>
+    <host ip="208.84.244.127">https://chat.terra.com.br</host>
+    <path><![CDATA[/favicon.ico]]></path>
+    <location><![CDATA[/favicon.ico]]></location>
+    <severity>Information</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>Unless directed otherwise, browsers may store a local cached copy of content received from web servers. Some browsers, including Internet Explorer, cache content accessed via HTTPS. If sensitive information in application responses is stored in the local cache, then this may be retrieved by other users who have access to the same computer at a future time.</p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>Applications should return caching directives instructing browsers not to store local copies of any sensitive data. Often, this can be achieved by configuring the web server to prevent caching for relevant paths within the web root. Alternatively, most web development platforms allow you to control the server's caching directives from within individual scripts. Ideally, the web server should return the following HTTP headers in all responses containing sensitive content:</p>
+<ul>
+<li>Cache-control: no-store</li><li>Pragma: no-cache</li></ul>]]></remediationBackground>
+  </issue>
+  <issue>
+    <serialNumber>6396050654288996352</serialNumber>
+    <type>7340288</type>
+    <name>Cacheable HTTPS response</name>
+    <host ip="208.84.244.127">https://chat.terra.com.br</host>
+    <path><![CDATA[/globalSTATIC/fe/zaz-admanager/zaz-admanager.html]]></path>
+    <location><![CDATA[/globalSTATIC/fe/zaz-admanager/zaz-admanager.html]]></location>
+    <severity>Information</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>Unless directed otherwise, browsers may store a local cached copy of content received from web servers. Some browsers, including Internet Explorer, cache content accessed via HTTPS. If sensitive information in application responses is stored in the local cache, then this may be retrieved by other users who have access to the same computer at a future time.</p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>Applications should return caching directives instructing browsers not to store local copies of any sensitive data. Often, this can be achieved by configuring the web server to prevent caching for relevant paths within the web root. Alternatively, most web development platforms allow you to control the server's caching directives from within individual scripts. Ideally, the web server should return the following HTTP headers in all responses containing sensitive content:</p>
+<ul>
+<li>Cache-control: no-store</li><li>Pragma: no-cache</li></ul>]]></remediationBackground>
+  </issue>
+  <issue>
+    <serialNumber>8249794586437324800</serialNumber>
+    <type>16777472</type>
+    <name>SSL certificate</name>
+    <host ip="208.84.244.127">https://chat.terra.com.br</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Information</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>SSL (or TLS) helps to protect the confidentiality and integrity of information in transit between the browser and server, and to provide authentication of the server's identity. To serve this purpose, the server must present an SSL certificate that is valid for the server's hostname, is issued by a trusted authority and is valid for the current date. If any one of these requirements is not met, SSL connections to the server will not provide the full protection for which SSL is designed.</p>
+<p>It should be noted that various attacks exist against SSL in general, and in the context of HTTPS web connections in particular. It may be possible for a determined and suitably-positioned attacker to compromise SSL connections without user detection even when a valid SSL certificate is used. </p>]]></issueBackground>
+    <references><![CDATA[<ul><li><a href="https://wiki.mozilla.org/Security/Server_Side_TLS">SSL/TLS Configuration Guide</a></li></ul>]]></references>
+    <issueDetail><![CDATA[The server presented a valid, trusted SSL certificate. This issue is purely informational.<br><br>The server presented the following certificates:<br><br><h4>Server certificate</h4><table><tr><td><b>Issued to:</b>&nbsp;&nbsp;</td><td>*.terra.com.br, *.trrsf.com, *.trrsf.com.br, *.terraempresas.com.br, *.wsv.terra.com.br, terra.com.br</td></tr><tr><td><b>Issued by:</b>&nbsp;&nbsp;</td><td>GlobalSign Organization Validation CA - SHA256 - G2</td></tr><tr><td><b>Valid from:</b>&nbsp;&nbsp;</td><td>Mon Apr 20 05:06:05 BRT 2015</td></tr><tr><td><b>Valid to:</b>&nbsp;&nbsp;</td><td>Thu Apr 20 05:06:05 BRT 2017</td></tr></table><h4>Certificate chain #1</h4><table><tr><td><b>Issued to:</b>&nbsp;&nbsp;</td><td>GlobalSign Organization Validation CA - SHA256 - G2</td></tr><tr><td><b>Issued by:</b>&nbsp;&nbsp;</td><td>GlobalSign Root CA</td></tr><tr><td><b>Valid from:</b>&nbsp;&nbsp;</td><td>Thu Feb 20 07:00:00 BRT 2014</td></tr><tr><td><b>Valid to:</b>&nbsp;&nbsp;</td><td>Tue Feb 20 07:00:00 BRT 2024</td></tr></table><h4>Certificate chain #2</h4><table><tr><td><b>Issued to:</b>&nbsp;&nbsp;</td><td>GlobalSign Root CA</td></tr><tr><td><b>Issued by:</b>&nbsp;&nbsp;</td><td>GlobalSign Root CA</td></tr><tr><td><b>Valid from:</b>&nbsp;&nbsp;</td><td>Tue Sep 01 09:00:00 BRT 1998</td></tr><tr><td><b>Valid to:</b>&nbsp;&nbsp;</td><td>Fri Jan 28 09:00:00 BRT 2028</td></tr></table>]]></issueDetail>
+  </issue>
+  <issue>
+    <serialNumber>4740803588404261888</serialNumber>
+    <type>5245344</type>
+    <name>Frameable response (potential Clickjacking)</name>
+    <host ip="208.84.244.127">https://chat.terra.com.br</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Information</severity>
+    <confidence>Firm</confidence>
+    <issueBackground><![CDATA[<p>If a page fails to set an appropriate X-Frame-Options or Content-Security-Policy HTTP header, it might be possible for a page controlled by an attacker to load it within an iframe. This may enable a clickjacking attack, in which the attacker's page overlays the target application's interface with a different interface provided by the attacker. By inducing victim users to perform actions such as mouse clicks and keystrokes, the attacker can cause them to unwittingly carry out actions within the application that is being targeted. This technique allows the attacker to circumvent defenses against cross-site request forgery, and may result in unauthorized actions.</p>
+<p>Note that some applications attempt to prevent these attacks from within the HTML page itself, using "framebusting" code. However, this type of defense is normally ineffective and can usually be circumvented by a skilled attacker.</p>
+<p>You should determine whether any functions accessible within frameable pages can be used by application users to perform any sensitive actions within the application. </p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>To effectively prevent framing attacks, the application should return a response header with the name <b>X-Frame-Options</b> and the value <b>DENY</b> to prevent framing altogether, or the value <b>SAMEORIGIN</b> to allow framing only by pages on the same origin as the response itself. Note that the SAMEORIGIN header can be partially bypassed if the application itself can be made to frame untrusted websites.</p>]]></remediationBackground>
+    <references><![CDATA[<ul><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options">X-Frame-Options</a></li></ul>]]></references>
+  </issue>
+  <issue>
+    <serialNumber>9044071491764398080</serialNumber>
+    <type>5245344</type>
+    <name>Frameable response (potential Clickjacking)</name>
+    <host ip="208.84.244.127">https://chat.terra.com.br</host>
+    <path><![CDATA[/favicon.ico]]></path>
+    <location><![CDATA[/favicon.ico]]></location>
+    <severity>Information</severity>
+    <confidence>Firm</confidence>
+    <issueBackground><![CDATA[<p>If a page fails to set an appropriate X-Frame-Options or Content-Security-Policy HTTP header, it might be possible for a page controlled by an attacker to load it within an iframe. This may enable a clickjacking attack, in which the attacker's page overlays the target application's interface with a different interface provided by the attacker. By inducing victim users to perform actions such as mouse clicks and keystrokes, the attacker can cause them to unwittingly carry out actions within the application that is being targeted. This technique allows the attacker to circumvent defenses against cross-site request forgery, and may result in unauthorized actions.</p>
+<p>Note that some applications attempt to prevent these attacks from within the HTML page itself, using "framebusting" code. However, this type of defense is normally ineffective and can usually be circumvented by a skilled attacker.</p>
+<p>You should determine whether any functions accessible within frameable pages can be used by application users to perform any sensitive actions within the application. </p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>To effectively prevent framing attacks, the application should return a response header with the name <b>X-Frame-Options</b> and the value <b>DENY</b> to prevent framing altogether, or the value <b>SAMEORIGIN</b> to allow framing only by pages on the same origin as the response itself. Note that the SAMEORIGIN header can be partially bypassed if the application itself can be made to frame untrusted websites.</p>]]></remediationBackground>
+    <references><![CDATA[<ul><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options">X-Frame-Options</a></li></ul>]]></references>
+  </issue>
+</issues>

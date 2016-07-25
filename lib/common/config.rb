@@ -47,7 +47,7 @@ class Configuration
    		 	end
 
 			@options[:tool] = nil
-    		opts.on("-n", "--tool-name", "Scanner tool name. Current available tools: \e[36m#{@flame_data[:tools].join(", ")}\e[0m (required)") do
+    		opts.on("-n", "--tool-name", "Scanner name. Current available tools: \e[36m#{@flame_data[:tools].join(", ")}\e[0m (required)") do
     			@options[:tool] = ARGV[0].capitalize
    		 	end
 
@@ -62,7 +62,7 @@ class Configuration
    		 end
 
    		opts.separator " Splunk options:"
-   		opts.separator "   Configure Splunk sepecif environment\n\n"
+   		opts.separator "   Configure Splunk specific environment\n\n"
 
 			@options[:username] = nil
     	 opts.on("-u", "--username", "Splunk username (required)") do
@@ -85,7 +85,7 @@ class Configuration
     	end
 
     	@options[:token] = nil
-    	 opts.on("--token", "Splunk HTTP event collector token. If no token be specified, Flame will generate a new") do
+    	 opts.on("--token", "Splunk HTTP event collector token. If no token was specified, Flame will generate a new") do
      		 @options[:token] = ARGV[0]
     	end
 

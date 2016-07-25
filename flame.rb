@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # Flame v1.0 - xxx xxxxx
-# Created by Tiago Ferreira - Security Engineering (tiago at blazeinfosec dot com)
-# Blaze Information Security - http://www.blazeinfosec.com/
+# Developed by Tiago Ferreira - Security Engineering (tiago at blazeinfosec dot com)
+# Blaze Information Security - https://www.blazeinfosec.com/ - https://blog.blazeinfosec.com
  
 PATH = File.dirname(__FILE__)
 require File.join(PATH, 'environment')

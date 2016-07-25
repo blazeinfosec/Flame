@@ -9,13 +9,13 @@ class Reportfile
 	end
 	
 	def read_file()
-		@debug.status "Loading scanner file \e[36m#{@file}\e[0m"
+		@debug.status "Loading scanner report \e[36m#{@file}\e[0m"
 
 		if File.exist?(@file)
 			file_report = load_file()
 			@debug.success "File was successfuly loaded"
 		else
-			@debug.error "The file #{@file} does not exist in the current path.\n"
+			@debug.error "The provided file #{@file} does not exist in the current path.\n"
 			exit
 		end
 
@@ -36,7 +36,7 @@ class Reportfile
 		if @current_formats.include?(File.extname(@file))
 			file_format = extension
 		else
-			@debug.error "The provided file format is not currently supported. Please give a file with the folowing formats: #{@current_formats.join(", ")}\n"
+			@debug.error "The provided file format it is not currently supported. Please give one of the folowing formats: #{@current_formats.join(", ")}\n"
 			exit
 		end
 

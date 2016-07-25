@@ -65,7 +65,7 @@ class Start
     	elsif File.extname(@config[:file]) == ".html"
       		parser =  parse[:html].new(@config,@debug)
     	else
-      		@debug.error "The provided file format is not valid. Current supported file formats: #{@flame_data[:formats].join(", ")}\n"
+      		@debug.error "The provided file extension it is not currently supported. Please provide one the following: #{@flame_data[:formats].join(", ")}\n"
       		exit
     	end
 
@@ -75,7 +75,7 @@ class Start
 	# Verify the scanner provided  
 	def check_tools
 		if !@flame_data[:tools].include?(@config[:tool])
-			@debug.error "The provided tool (#{@config[:tool]}), it is not currently supported. Current tools supported: #{@flame_data[:tools].join(", ")}\n"
+			@debug.error "The provided tool (#{@config[:tool]}), it is not currently supported. Supported tools: #{@flame_data[:tools].join(", ")}\n"
 			exit
 		end
 	end
@@ -89,11 +89,11 @@ class Start
 			siem = Kernel.const_get("#{@config[:siem]}")
 			siem = siem.new(@config,parser,@debug)
 		else
-			@debug.error "The provided SIEM (#{@config[:siem]}), it is not currently supported. Current supported SIEM: #{@flame_data[:siem]
+			@debug.error "The provided SIEM (#{@config[:siem]}), it is not currently supported. Supported SIEM: #{@flame_data[:siem]
 					 .join(", ")}\n"
 			exit
 		end
 
-		@debug.status "Thanks for using Flame :)\n"
+		@debug.status "All the jobs were successfuly finished :)\n"
 	end
 end

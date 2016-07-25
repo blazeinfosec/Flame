@@ -4,9 +4,9 @@ module Burp
 		def initialize(cli, debug)
 			@plugin	 =  'Burp'
 			@author  =  {
-						  :name     => 'Tiago Ferreira',
-						  :contact  => 'tiago at blazeinfosec.com'
-						}
+						  			 :name     => 'Tiago Ferreira',
+						 				 :contact  => 'tiago at blazeinfosec.com'
+									}
 			@debug	 =  debug
 			@cli	 =  cli
 			@report  =  Reportfile.new(@cli, @debug).read_file

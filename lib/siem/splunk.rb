@@ -14,14 +14,14 @@ class Splunk < Siem::Connector
 		@tool		  =  cli[:tool]
 		@flame_data   =  Datastore.new().flame_data
 		
-		@debug.status "\e[36mSplunk\e[0m will be used as SIEM"
+		@debug.status "\e[36mSplunk\e[0m will be selected as SIEM"
 		@SESSION = get_session()
 		get_event_token()
 		build_event()
 	end
 
 	def get_session()
-		@debug.status "Connecting to Splunk server"
+		@debug.status "Connecting to the Splunk server"
 		response = flame_post("/services/auth/login",
                                "username=#{@username}&password=#{@password}")
     	xml_parse = Nokogiri::Slop(response)
@@ -66,7 +66,7 @@ class Splunk < Siem::Connector
 	end
 
 	def create_event_collector()
-		@debug.success "Token does not exists. Flame will generate a new HTTP Event Collector token"
+		@debug.success "No authentication token was provided, Flame will generate a new HTTP Event Collector token"
 		token_response = flame_post("/servicesNS/nobody/search/data/inputs/http", 
 			                        "name=Flame&source=#{@source_name}")
 		token = Nokogiri::XML(token_response)

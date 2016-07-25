@@ -10,7 +10,7 @@ class Configuration
 	end
 	
 	def banner
-		@debug.status "Flame - Send vulnerabilities scanners reports to SIEM"
+		@debug.status "Flame - Send vulnerabilities reports to SIEM"
 		
 	end
 
@@ -23,7 +23,7 @@ class Configuration
   			end
 
   			unless missing.empty?                                            
-    			@debug.error "Missing required options: #{missing.join(', ')}\n"                                                                
+    			@debug.error "Missing mandatory options: #{missing.join(', ')}\n"                                                                
     			exit                                                         
   			end
 		rescue OptionParser::InvalidOption, OptionParser::MissingArgument

@@ -3,7 +3,7 @@
 Working ...
 
 
-# Install 
+## Install 
 
 First clone Flame repository
 
@@ -18,7 +18,7 @@ gem install nokogiri
 gem install optparse
 ```
 
-# Run Flame
+## Run Flame
 
 ```
 tiago@blazesecurity:~/blaze/wildfire/tools/flame$ ./flame.rb 

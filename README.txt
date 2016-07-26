@@ -1,9 +1,7 @@
 ## Flame
 
+Working ...
 
-, the plugin 
-will generate an Splunk Event directly into its management interface using the
-Http Event Collector.
 
 # Install 
 
@@ -20,7 +18,7 @@ gem install nokogiri
 gem install optparse
 ```
 
-Run Flame
+# Run Flame
 
 ```
 tiago@blazesecurity:~/blaze/wildfire/tools/flame$ ./flame.rb 

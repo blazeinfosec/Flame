@@ -7,7 +7,7 @@ The currently vulnerability scanners supported is Arachni, Burp, Openvas and Owa
 
 ## Install 
 
-First clone Flame repository
+Clone Flame repository
 
 ```
 git clone https://github.com/blazeinfosec/Flame.git
@@ -45,6 +45,14 @@ Usage: flame [options]
         --source                     Specify a source name to be used in Splunk (default is Flam
 
 ```
+
+## Flame - Importing Openvas report to Splunk
+
+# Flame
+![Sample screenshot](https://raw.githubusercontent.com/blazeinfosec/Flame/master/resources/images/flame_arachni.png)
+
+# Splunk 
+![Sample screenshot](https://raw.githubusercontent.com/blazeinfosec/Flame/master/resources/images/splunk_01.png)
 
 
 ## Author

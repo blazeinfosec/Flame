@@ -1,6 +1,8 @@
 ## Flame
 
-Working ...
+Flame is a SIEM integration tool that enables security professionals to import scanner vulnerabilities reports into the Splunk, Elastic Search and others SIEMs. At the present time this release only works with Splunk as SIEM, the next release will accept Elastic Search and Arcsight as well. 
+
+The currently vulnerability scanners supported is Arachni, Burp, Openvas and OwaspZAP.
 
 
 ## Install 
@@ -11,7 +13,8 @@ First clone Flame repository
 git clone https://github.com/blazeinfosec/Flame.git
 ```
 
-In order to get the things working, please install the Nokogiri and Optarse libraries.
+In order to get the things working, please make sure that Nokogiri and Optarse libraries are
+installed.
 
 ```
 gem install nokogiri

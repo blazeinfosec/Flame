@@ -5,7 +5,7 @@ Flame is a SIEM integration tool that enables security professionals to import s
 The currently vulnerability scanners supported is Arachni, Burp, Openvas and OwaspZAP.
 
 
-## Install 
+# Install 
 
 Clone Flame repository
 
@@ -21,7 +21,7 @@ gem install nokogiri
 gem install optparse
 ```
 
-## Run Flame
+# Run Flame
 
 ```
 tiago@blazesecurity:~/blaze/wildfire/tools/flame$ ./flame.rb 
@@ -46,20 +46,20 @@ Usage: flame [options]
 
 ```
 
-## Flame - Importing Openvas report to Splunk
+# Flame - Importing Openvas report to Splunk
 
-# Flame
+## Flame
 ![Sample screenshot](https://raw.githubusercontent.com/blazeinfosec/Flame/master/resources/images/flame_arachni.png)
 
-# Splunk 
+## Splunk 
 ![Sample screenshot](https://raw.githubusercontent.com/blazeinfosec/Flame/master/resources/images/splunk_01.png)
 
 
-## Author
+# Author
 
 * **Tiago Ferreira** - tiago at blazeinfosec dot com
 * **Company** - Blaze Information Security (https://www.blazeinfosec.com/)
 
-## License 
+# License 
 
 This project is licensed under the Apache License - see the [LICENSE](LICENSE) file for details

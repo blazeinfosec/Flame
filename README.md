@@ -1,4 +1,4 @@
-## Flame
+# Flame
 
 Flame is a SIEM integration tool that enables security professionals to import scanner vulnerabilities reports into the Splunk, Elastic Search and others SIEMs. At the present time this release only works with Splunk as SIEM, the next release will accept Elastic Search and Arcsight as well. 
 

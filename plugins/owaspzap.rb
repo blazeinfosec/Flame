@@ -2,14 +2,14 @@ module Owaspzap
 	class Xml
 
 		def initialize(cli, debug)
-      @plugin  = 'Owaspzap'
-      @author  =  {
-                     :name     => 'Tiago Ferreira',
-                     :contact  => 'tiago at blazeinfosec.com'
-                  }
-			@debug	 = debug
-			@cli	   = cli
-			@report  = Reportfile.new(@cli, @debug).read_file
+        @plugin  = 'Owaspzap'
+        @author  =  {
+                       :name     => 'Tiago Ferreira',
+                       :contact  => 'tiago at blazeinfosec.com'
+                    }
+        @debug	 = debug
+        @cli	   = cli
+        @report  = Reportfile.new(@cli, @debug).read_file
 
 		end
 

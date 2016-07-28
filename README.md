@@ -1,19 +1,21 @@
-# Flame
+## Flame
 
-Flame is a SIEM integration tool that enables security professionals to import scanner vulnerabilities reports into the Splunk, Elastic Search and others SIEMs. At the present time this release only works with Splunk as SIEM, the next release will accept Elastic Search and Arcsight as well. 
+Flame is a SIEM integration tool that enables security professionals to import scanner vulnerability reports into popular SIEMs.
 
-The currently vulnerability scanners supported is Arachni, Burp, Openvas and OwaspZAP.
+The vulnerability scanners currently supported are Arachni, Burp, OpenVAS and OWASP ZAP.
 
 
-# Install 
+## Installation
 
-Clone Flame repository
+Clone the repository
 
 ```
 git clone https://github.com/blazeinfosec/Flame.git
 ```
 
-In order to get the things working, please make sure that Nokogiri and Optarse libraries are
+## Dependencies
+
+In order to get things working, please make sure that Nokogiri and Optarse libraries are
 installed.
 
 ```
@@ -21,7 +23,11 @@ gem install nokogiri
 gem install optparse
 ```
 
-# Run Flame
+## Limitations
+
+Currently it can only integrate vulnerability reports into Splunk. Support for Elastic Search and Arcsight will be added in the next release of this tool.
+
+## Usage
 
 ```
 tiago@blazesecurity:~/blaze/wildfire/tools/flame$ ./flame.rb 
@@ -46,7 +52,7 @@ Usage: flame [options]
 
 ```
 
-# Flame - Importing Openvas report to Splunk
+## Sample usage - Importing OpenVAS report to Splunk
 
 ## Flame
 ![Sample screenshot](https://raw.githubusercontent.com/blazeinfosec/Flame/master/resources/images/flame_arachni.png)
@@ -55,11 +61,11 @@ Usage: flame [options]
 ![Sample screenshot](https://raw.githubusercontent.com/blazeinfosec/Flame/master/resources/images/splunk_01.png)
 
 
-# Author
+## Author
 
 * **Tiago Ferreira** - tiago at blazeinfosec dot com
-* **Company** - Blaze Information Security (https://www.blazeinfosec.com/)
+* **Company** - [Blaze Information Security](https://www.blazeinfosec.com)
 
-# License 
+## License 
 
 This project is licensed under the Apache License - see the [LICENSE](LICENSE) file for details
